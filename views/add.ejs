@@ -1,0 +1,23 @@
+<%- include('./partials/header.ejs') %>
+<form action="/add" method="post">
+    <div>
+        <input type="text" name="title" placeholder="Book Title"/>
+    </div>
+    <div>
+        <input type="text" name="author" placeholder="Author">
+        <input type="text" name="dateOfCompletion" placeholder="Date of Completion">
+    </div>
+    <div>
+        <textarea name="feedback" id="feedback" placeholder="Feedback" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+        <input type="radio" name="rating" id="5" value="5"><label for="5">5</label>
+        <input type="radio" name="rating" id="4" value="4"><label for="4">4</label>
+        <input type="radio" name="rating" id="3" value="3"><label for="3">3</label>
+        <input type="radio" name="rating" id="2" value="2"><label for="2">2</label>
+        <input type="radio" name="rating" id="1" value="1"><label for="1">1</label>
+        <input type="text" name="isbn" placeholder="ISBN Number">
+        <input type="submit" value="Submit">
+    </div>
+</form>
+<%- include('./partials/footer.ejs') %>
