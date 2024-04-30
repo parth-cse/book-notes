@@ -403,3 +403,141 @@ textarea{
 .menu-box select option{
     color: #223148;
 }
+
+@media(max-width: 1200px){
+    .book-container{
+        grid-template-columns: repeat(3, 258.4px);
+    }
+
+    .book-container-L{
+        display: block;
+    }
+
+    .book-cover-L{
+        float: left;
+        margin-right: 130px;
+    }
+
+    #form{
+        padding: 60px 80px;
+    }
+}
+
+@media (max-width: 992px){
+    .book-container{
+        grid-template-columns: repeat(2, 258.4px);
+    }
+
+    .book-container-L{
+        display: block;
+    }
+
+    .book-cover-L{
+        float: none;
+        width: 100%;
+        object-fit: scale-down;
+    }
+}
+
+@media(max-width: 768px){
+    .book-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    header{
+        height: 140px;
+    }
+
+    .header-content{
+        margin: 0px 30px;
+        gap: 30px;
+        height: 140px;
+    }
+
+    .title-img{
+        width: 200px;
+    }
+
+    .title{
+        font-size: 30px;
+    }
+
+    footer{
+        display: block;
+        background-color: #C3EBF5;
+    }
+
+    #socialMediaLinksFooter{
+        padding: 0px;
+    }
+
+    .img-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-content{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0px;
+        height: 77px;
+    }
+
+    .Copyright p{
+        padding-top: 100px;
+        margin: 0px;
+    }
+
+    .rating-olid{
+        gap:40px;
+    }
+
+    .menu-box{
+        height: 110vh;
+    }
+}
+
+@media(max-width: 576px){
+    .title-img{
+         display: none;
+    }
+
+    .Copyright p{
+        font-size: 15px;
+    }
+
+    .menu-box{
+        width: 576px;
+    }
+
+    .menu-box>div{
+        width: 100%;
+        padding: 40px;
+    }
+
+    #sort{
+        width: 250px;
+    }
+
+    #book-details{
+        padding: 40px;
+    }
+
+    #form{
+        padding: 60px 20px;
+    }
+
+    .rating-olid{
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .more-details{
+        gap: 20px;
+    }
+}
