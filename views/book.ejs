@@ -1,11 +1,20 @@
 <%- include('./partials/header.ejs') %>
-<section>
-    <img src="https://covers.openlibrary.org/b/olid/<%= book.olid %>-L.jpg" alt="">
-    <h1><%= book.title %></h1>
-    <p><%= book.author %></p>
-    <p><%= book.dateOfCompletion %></p>
-    <p><%= book.feedback %></p>
-    <a href="/edit?id=<%= book.id %>">Edit</a>
-    <a href="/delete?id=<%= book.id %>">Delete</a>
+<section id="book-details">
+    <div class="book-container-L">
+        <div>
+            <img class="book-cover-L" src="https://covers.openlibrary.org/b/olid/<%= book.olid %>-L.jpg" alt="">
+        </div>
+        <div>
+            <h1 class="btitle"><%= book.title %></h1><br>
+            <p class="bauthor">Author: <%= book.author %></p><br>
+            <p class="bfeedback">Feedback:<br><%= book.feedback %></p><br>
+            <div class="btns">
+                <a href="/edit?id=<%= book.id %>" class="btn btn-warning">Edit</a>
+                <a href="/delete?id=<%= book.id %>" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    
+    
 </section>
 <%- include('./partials/footer.ejs') %>

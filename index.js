@@ -68,7 +68,7 @@ app.post('/edit', async (req, res) => {
     const data = req.body;
     try{
         const result = await db.query("UPDATE book SET title = $1, author = $2, feedback = $3, ratings =$4, olid = $5 WHERE id = $6;", [data.title, data.author, data.feedback, data.rating, data.olid, data.updateId]);
-        console.log('data updates: '+data);
+        console.log('data updates: '+  JSON.stringify(data));
     }catch(err){
         console.log("Error:" + err);
     }
