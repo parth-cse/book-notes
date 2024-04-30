@@ -12,16 +12,14 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 const db = new pg.Client({
-    user: 'ppj8988',
-    password: 't5Wj2G7Vxcf2RpJscaVkaqjrWzpgjWZ3',
-    host: 'dpg-cooj6jol6cac738khpa0-a',
-    database: 'books_wdqi',
+    user: 'postgres',
+    password: 'pass',
+    host: 'localhost',
+    database: 'books',
     port: 5432
 });
 
 db.connect();
-
-await db.query(`CREATE TABLE IF NOT EXISTS book (id serial PRIMARY KEY, title TEXT NOT NULL, author TEXT, dateofcompletion DATE, feedback TEXT, ratings INTEGER NOT NULL, olid CHAR(11) NOT NULL, dos TIMESTAMP DEFAULT CURRENT_TIMESTAMP);`)
 
 app.get('/', async (req, res) => {
     let result;
