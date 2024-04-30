@@ -6,6 +6,8 @@ import bodyParser from 'body-parser';
 const app = express();
 const port = 3000;
 
+let filter = 'most-recent';
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -20,14 +22,29 @@ const db = new pg.Client({
 db.connect();
 
 app.get('/', async (req, res) => {
-    const result = await db.query("SELECT * FROM book ORDER BY dos");
+    let result = await db.query("SELECT * FROM book ORDER BY dos");
+    if(filter == 'most-recent'){
+        result = await db.query("SELECT * FROM book ORDER BY dos ASC");
+    }else if(filter == 'most-oldest'){
+        result = await db.query("SELECT * FROM book ORDER BY dos DESC");
+    }else if(filter == 'ratings'){
+        result = await db.query("SELECT * FROM book ORDER BY ratings DESC");
+    }else if(filter == 'title'){
+        result = await db.query("SELECT * FROM book ORDER BY title");
+    }
     const data = result.rows;
-    return res.render("index.ejs", {pageTitle: "Home | Book Notes", books: data});
+    return res.render("index.ejs", {pageTitle: "Home", books: data});
 });
 
 app.get('/add', async(req, res) => {
-    return res.render('add.ejs', {pageTitle: "Add Book | Book Notes"})
-})
+    return res.render('add.ejs', {pageTitle: "Add Book"})
+});
+
+app.post('/filter', (req, res) => {
+    filter = req.body.sort;
+    console.log(filter);
+    return res.redirect("/");
+});
 
 app.post('/add', async (req, res) => {
     const data = req.body;
@@ -45,7 +62,7 @@ app.get('/book', async (req, res) => {
     try{
         const result = await db.query("SELECT * FROM book WHERE id=$1", [id]);
         const data = result.rows[0];
-        return res.render('book.ejs', {book: data, pageTitle: data.title +" | Book Notes"});
+        return res.render('book.ejs', {book: data, pageTitle: data.title});
     }catch(err){
         console.log("Error: "+ err);
         return res.redirect("/");
@@ -57,7 +74,7 @@ app.get('/edit', async (req, res) => {
     try{
         const result = await db.query("SELECT * FROM book WHERE id=$1", [id]);
         const data = result.rows[0];
-        return res.render('edit.ejs', {book: data, pageTitle:"Edit | Book Notes"});
+        return res.render('edit.ejs', {book: data, pageTitle:"Edit"});
     }catch(err){
         console.log("Error: "+ err);
         return res.redirect("/");
