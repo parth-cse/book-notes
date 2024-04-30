@@ -21,6 +21,8 @@ const db = new pg.Client({
 
 db.connect();
 
+await db.query(`CREATE TABLE IF NOT EXISTS books (id serial PRIMARY KEY, title TEXT NOT NULL, author TEXT, dateofcompletion DATE, feedback TEXT, ratings INTEGER NOT NULL, olid CHAR(11) NOT NULL, dos TIMESTAMP DEFAULT CURRENT_TIMESTAMP);`)
+
 app.get('/', async (req, res) => {
     let result;
     if(filter == 'most-recent'){
