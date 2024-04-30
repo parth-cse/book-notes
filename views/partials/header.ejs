@@ -29,31 +29,37 @@
                         </svg>
                     </button>
                     <div id="menu" hidden>
-                        <button onclick="handler2()">
+                        <div class="menu-box"><div>
+                            <button onclick="handler2()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                             </svg>
-                        </button>
-                        <% if(locals.pageTitle == 'Home'){ %>
-                        <div>
-                            <form action="/filter" method="post">
-                                <select id="sort" name="sort" onchange="this.form.submit()" placeholder="Sort By:">
-                                    <option value="all">Sort By...</option>
-                                    <option value="most-recent">Most Recent</option>
-                                    <option value="most-oldest">Most Oldest</option>
-                                    <option value="ratings">High Ratings</option>
-                                    <option value="title">Book Title</option>
-                                </select>
-                            </form>
-                        </div>
-                        <% }%>
-                    <div>
-                        <a href="./add">Add Book</a>
+                            </button>
+                            <% if(locals.pageTitle == 'Home'){ %>
+                                <div>
+                                    <form action="/filter" method="post">
+                                        <select id="sort" name="sort" onchange="this.form.submit()" placeholder="Sort By:">
+                                            <option value="all">Sort By...</option>
+                                            <option value="most-recent">Most Recent</option>
+                                            <option value="most-oldest">Most Oldest</option>
+                                            <option value="ratings">High Ratings</option>
+                                            <option value="title">Book Title</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            <% } else {%>
+                                <div>
+                                    <a href="/" class="home-btn btn btn-outline-light">Return back To Home</a>
+                                </div>
+                            <% } %>
+                            <div>
+                                <a href="./add" class="btn btn-outline-light">Add Book</a>
+                            </div>
+                        </div></div>
                     </div>
-                </div>
-            </div> 
+                </div> 
 
-        </div>
+            </div>
         </div>   
         
     </header>

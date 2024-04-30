@@ -22,7 +22,7 @@ const db = new pg.Client({
 db.connect();
 
 app.get('/', async (req, res) => {
-    let result = await db.query("SELECT * FROM book ORDER BY dos");
+    let result;
     if(filter == 'most-recent'){
         result = await db.query("SELECT * FROM book ORDER BY dos ASC");
     }else if(filter == 'most-oldest'){

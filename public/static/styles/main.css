@@ -359,3 +359,47 @@ textarea{
     gap: 80px;
     align-items: center;
 }
+
+.menu-box{
+    position: fixed;
+        right: 0px;
+        top: 0px;
+    width: 593px;
+    height: 100vh;
+    background-color: #223148d9;
+    z-index: 1;
+}
+
+.menu-box>div{
+    padding: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+.menu-box button{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    padding: 0px;
+    align-self: end;
+}
+
+.menu-box select{
+    width: 413px;
+    border: none;
+    border-bottom: #fff solid  2px;
+    background-color: transparent;
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: "Quicksand";
+    margin-top: 80px;
+}
+
+.menu-box select option{
+    color: #223148;
+}
