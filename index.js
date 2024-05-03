@@ -2,9 +2,11 @@ import express from 'express';
 import axios from 'axios';
 import pg from 'pg';
 import bodyParser from 'body-parser';
+import env from "dotenv";
 
 const app = express();
 const port = 3000;
+env.config();
 
 let filter = 'most-recent';
 
@@ -12,11 +14,11 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 const db = new pg.Client({
-    user: 'postgres',
-    password: 'pass',
-    host: 'localhost',
-    database: 'books',
-    port: 5432
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    host: process.env.DATABASE_HOST,
+    database: process.env.DATABASE_NAME,
+    port: process.env.DATABASE_PORT
 });
 
 db.connect();
