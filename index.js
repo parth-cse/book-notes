@@ -64,7 +64,7 @@ app.get('/book', async (req, res) => {
     try{
         const result = await db.query("SELECT * FROM book WHERE id=$1", [id]);
         const data = result.rows[0];
-        return res.render('book.ejs', {book: data, pageTitle: data.title});
+        return res.render('book.ejs', {book: data, pageTitle: data.title, key : "123"});
     }catch(err){
         console.log("Error: "+ err);
         return res.redirect("/");

@@ -10,10 +10,24 @@
             <p class="bfeedback">Feedback:<br><%= book.feedback %></p><br>
             <div class="btns">
                 <a href="/edit?id=<%= book.id %>" class="btn btn-warning">Edit</a>
-                <a href="/delete?id=<%= book.id %>" class="btn btn-danger">Delete</a>
+                <button onclick="deleteAttempt()" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>
+    <script>
+    
+        function deleteAttempt(){
+            let userKey = prompt("Enter your Access Key: ");
+            console.log(userKey);
+            if(userKey == "<%= process.env.Access_Key %>"){
+                console.log()
+                alert("Deleted");
+                window.location.href = "/delete?id=<%= book.id %>";
+            }else{
+                alert("Unauthorized Access Denied");
+            }
+        }
+    </script>
     
     
 </section>
